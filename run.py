@@ -30,7 +30,7 @@ class Battleship:
     def __init__(self, board):
         self.board = board
 
-    def create_ship(self):
+    def create_ships(self):
         for i in range(5):
             self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
             while self.board[self.x_row][self.y_column] == "X":
@@ -64,39 +64,39 @@ class Battleship:
                     hit_ships += 1
         return  hit_ships
 
-#
-    def RunGame():
-        computer_board = GameBoard([[" "] * 8 for i in range(8)])
-        users_guess_board = GameBoard([[" "] * 8 for i in range(8)])
-        Battleship.create_ships(computer_board)
-        #start 10 turns
-        turns = 10
-        while turns > 0:
-            GameBoard.print_board(user_guess_board)
-            #get user input
+
+def RunGame():
+    computer_board = GameBoard([[" "] * 8 for i in range(8)])
+    user_guess_board = GameBoard([[" "] * 8 for i in range(8)])
+    Battleship.create_ships(computer_board)
+    #start 10 turns
+    turns = 10
+    while turns > 0:
+        GameBoard.print_board(user_guess_board)
+        #get user input
+        user_x_row, user_y_column = Battleship.get_user_input(object)
+        #check if duplicate guess
+        while user_guess_board.board[user_x_row][user_y_column] == "-" or user_guess_board.board[user_x_row][user_y_column] == "X":
+            print("You guessed that one already")
             user_x_row, user_y_column = Battleship.get_user_input(object)
-            #check if duplicate guess
-            while user_guess_board.board[user_x_row][user_y_column] == "-" or user_guess_board.board[user_x_row][user_y_column] == "X":
-                print("You guessed that one already")
-                user_x_row, user_y_column = Battleship.get_user_input(object)
-            #check for hit or miss
-            if computer_board.board[user_x_row][user_y_column] == "X":
-                print("You sunk one of my battleship!")
-                user_guess_board.board[user_x_row][user_y_column] = "X"
-            else:
-                 print("You missed!")
-                 users_guess_board.board[user_x_row][user_y_column] = "-"
-            #check for win or lose
-            if Battleship.count_hit_ships(users_guess_board) == 5:
-                print("You hit all 5 battleships!")
+        #check for hit or miss
+        if computer_board.board[user_x_row][user_y_column] == "X":
+            print("You sunk one of my battleship!")
+            user_guess_board.board[user_x_row][user_y_column] = "X"
+        else:
+             print("You missed!")
+             users_guess_board.board[user_x_row][user_y_column] = "-"
+        #check for win or lose
+        if Battleship.count_hit_ships(users_guess_board) == 5:
+            print("You hit all 5 battleships!")
+            break
+        else:
+            turns -= 1
+            print(f"You have {turns} Cannon balls remaining")
+            if turns == 0:
+                print("Sorry you ran out of balls")
+                GameBoard.print_board(user_guess_board)
                 break
-            else:
-                turns -= 1
-                print(f"You have {turns} Cannon balls remaining")
-                if turns == 0:
-                    print("Sorry you ran out of balls")
-                    GameBoard.print_board(user_guess_board)
-                    break
 
 __name__ == '__main__'
 RunGame()
