@@ -1,3 +1,7 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+# import module random to set order of ships on the table
+import random
+
+class gameboard:
+    def __init__(self, board):
+        self.board = board
+
