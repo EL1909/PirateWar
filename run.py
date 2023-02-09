@@ -85,9 +85,9 @@ def RunGame():
             user_guess_board.board[user_x_row][user_y_column] = "X"
         else:
              print("You missed!")
-             users_guess_board.board[user_x_row][user_y_column] = "-"
+             user_guess_board.board[user_x_row][user_y_column] = "-"
         #check for win or lose
-        if Battleship.count_hit_ships(users_guess_board) == 5:
+        if Battleship.count_hit_ships(user_guess_board) == 5:
             print("You hit all 5 battleships!")
             break
         else:
