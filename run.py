@@ -50,7 +50,7 @@ class Battleship:
 
             y_column = input("Choose a letter, try to find my ship: \n").upper()
             while y_column not in "ABCDEFGH":
-                print('Not an appropiate choice, please select a valid column\n')
+                print('Sharpen your aim, please select a column LETTER\n')
                 y_column = input("Enter the column letter: \n").upper()
             return int(x_row) -1, GameBoard.get_letters_to_numbers()[y_column]
         except ValueError and KeyError:
@@ -91,13 +91,13 @@ def RunGame():
              user_guess_board.board[user_x_row][user_y_column] = "-"
         #check for win or lose
         if Battleship.count_hit_ships(user_guess_board) == 5:
-            print("You hit all of them!! Pirates menace is dismissed!!\n    WINNER")
+            print("You hit all of them!! Pirates menace is dismissed!!\n    WINNER\n")
             break
         else:
             turns -= 1
             print(f"You have {turns} Cannon balls remaining\n")
             if turns == 0:
-                print("Sorry you ran out of balls\n    GAME OVER")
+                print("Sorry you ran out of balls\n    GAME OVER\n")
                 GameBoard.print_board(user_guess_board)
                 break
 
