@@ -5,6 +5,8 @@ Institute mock terminal on Heroku.
 
 This game is inspired on the classic BattleShip game; more information on the game can be better explain and found on it's [wikipedia site](https://en.wikipedia.org/wiki/Battleship_(game))
 
+![Game screens](images/piratewar.png)
+
 For this version i built a 8 x 8 board, and the player must find and destroy the 5 Pirate ships randomly hidden. The game have not dificult levels because the setup of the ships is random.
 
 ## How to Play
@@ -16,11 +18,12 @@ For this version i built a 8 x 8 board, and the player must find and destroy the
 
 ## Features
 
+![Playing Grid](images/grid.jpg)
+
 - Pirate ships are randomly placed on the board.
 - Theres a Header and column to easily identify where to shoot.
 - The player can't see where the ships are unless they're destroyed.
 - The user have a counter to be aware of how many turns left remain.
-
 - Accepts user inputs
 - The input data is validated and check for errors
     - First input only accepts numbers from 1 to 8.
@@ -47,13 +50,13 @@ Then sets 10 turns to begin, will increment x3 when a ship is hitted.
 ## Testing
 
 I have manually ...
-- Passed the code through a PEP8 linter and confirmed there are no errors.
 - Gave invalid and repeated inputs.
 - Tested in my local terminal, and the code Institute heroku terminal too.
+- Passed the code through a PEP8 linter and there are two errors on lines 39 and 41.
 
 ## Bugs
 
-- When i wrote the code, i was getting errors in the PEP8 linter, some for missing sapcing and also too long strings; therefore i used short variables to replace long name.
+- When i wrote the code, i was getting errors in the PEP8 linter, some for missing spacing and also too long strings; therefore i used short variables to replace long name. However i could not repair the errors on line 39 and 41; i hope there are not signficant errors.
 - There are no remainig bugs im aware of.
 
 
