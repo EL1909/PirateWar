@@ -36,10 +36,9 @@ class Battleship:
 # Place the ships randomly inide our board
     def create_ships(self):
         for i in range(5):
-            sxy = self.x_row, self.y_column
-            sxy = random.randint(0, 7), random.randint(0, 7)
+            self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
             while self.board[self.x_row][self.y_column] == "X":
-                sxy = random.randint(0, 7), random.randint(0, 7)
+                self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
             self.board[self.x_row][self.y_column] = "X"
         return self.board
 
