@@ -1,6 +1,13 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## PIRATE WAR (Battleship)
 
-Welcome Efrain Luciano Fernandez Valverde,
+Pirate War (Battleship) is a Python terminal game. The game runs using the Code
+Institute mock terminal on Heroku.
+
+This game is inspired on the classic BattleShip game; more information on the game can be better explain and found on it's <a href:"https://en.wikipedia.org/wiki/Battleship_(game)">wikipedia site</a> 
+
+In this section, you will include one or two paragraphs providing an overview of your project. Essentially, this part is your sales pitch. At this stage, you should have a name for your project so use it! Don’t introduce the project as a Portfolio project for the diploma. In this section, describe what the project hopes to accomplish, who it is intended to target and how it will be useful to the target audience.
+
+For example; Love Running is a site that hopes to help keep people motivated to meet up for runs on a regular basis in Dublin, Ireland. The site will be targeted toward runners who are looking for a way to socialise and keep themselves fit. Love Running will be useful for runners to see exactly when and where they should be to join the running club.
 
 This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 

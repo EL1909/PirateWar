@@ -91,13 +91,13 @@ def RunGame():
              user_guess_board.board[user_x_row][user_y_column] = "-"
         #check for win or lose
         if Battleship.count_hit_ships(user_guess_board) == 5:
-            print("You hit all of them!! Pirates menace is dismissed!!\n    WINNER\n")
+            print("You hit all of them!! Pirates menace is dismissed!!\n\n    WINNER\n")
             break
         else:
             turns -= 1
             print(f"You have {turns} Cannon balls remaining\n")
             if turns == 0:
-                print("Sorry you ran out of balls\n    GAME OVER\n")
+                print("Sorry you ran out of balls\n\n    GAME OVER\n")
                 GameBoard.print_board(user_guess_board)
                 break
 
