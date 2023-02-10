@@ -68,3 +68,8 @@ This project was deployed using Code Institute's mock terminal for Heroku.
     - Set the buildbacks to Python and NodeJS in that order.
     - Link the Heroku app to the repository.
     - Click on **Deploy**
+
+## Credits
+- I consulted [**Knowledge Mavens**](https://www.youtube.com/@KnowledgeMavens) youtube channel, in order to correctly writte and indentitation of my code.
+- Code Institute for the deployment terminal.
+- Wikipedia for the details of the battleship game.
