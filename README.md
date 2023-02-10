@@ -1,38 +1,59 @@
-## PIRATE WAR (Battleship)
+# PIRATE WAR (Battleship)
 
 Pirate War (Battleship) is a Python terminal game. The game runs using the Code
 Institute mock terminal on Heroku.
 
-This game is inspired on the classic BattleShip game; more information on the game can be better explain and found on it's <a href:"https://en.wikipedia.org/wiki/Battleship_(game)">wikipedia site</a> 
+This game is inspired on the classic BattleShip game; more information on the game can be better explain and found on it's [wikipedia site](https://en.wikipedia.org/wiki/Battleship_(game))
 
-In this section, you will include one or two paragraphs providing an overview of your project. Essentially, this part is your sales pitch. At this stage, you should have a name for your project so use it! Don’t introduce the project as a Portfolio project for the diploma. In this section, describe what the project hopes to accomplish, who it is intended to target and how it will be useful to the target audience.
+For this version i built a 8 x 8 board, and the player must find and destroy the 5 Pirate ships randomly hidden. The game have not dificult levels because the setup of the ships is random.
 
-For example; Love Running is a site that hopes to help keep people motivated to meet up for runs on a regular basis in Dublin, Ireland. The site will be targeted toward runners who are looking for a way to socialise and keep themselves fit. Love Running will be useful for runners to see exactly when and where they should be to join the running club.
+## How to Play
+1. The purpose of the game is to destroy 5 ships hidden on the 8 x 8 Board.
+2. Then, must select two values from a Column of with numbers (1-8) and a row with letter (A-H).
+3. The user have 10 trys (Cannon Balls) to start.
+4. If the user Destroy the ship, 3 Cannon Balls will be added to the stock.
+5. In order to WIN the player must find all 5 ships before he ran out of Cannon Balls.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## Features
 
-## Reminders
+- Pirate ships are randomly placed on the board.
+- Theres a Header and column to easily identify where to shoot.
+- The player can't see where the ships are unless they're destroyed.
+- The user have a counter to be aware of how many turns left remain.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+- Accepts user inputs
+- The input data is validated and check for errors
+    - First input only accepts numbers from 1 to 8.
+    - Second input only accepts letters from A to H and Uppercase them to match the code validation.
+    - If there's an error the input will be required again.
+    - The same guess can not be entered twice.
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Future Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+- Add difficulty levels by increasing the ships or shoot number.
+- Add diferent types of ships, with more than one space.
+- Improvements in design and sounds. 
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Data Model
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+I wrote the code using two classes. The first one for the board and its frame.
 
-Connect your GitHub repository and deploy as normal.
+The second class for the ship's behavior, 3 methods to randomly set up the position on the board, determine and verifies the users input and identifies if the selected space was already chosen.
 
-## Constraints
+The runGame function starts the game, stablishing the lenght of the board.
+Then sets 10 turns to begin, will increment x3 when a ship is hitted.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Testing
 
------
-Happy coding!
+I have manually ...
+- Passed the code through a PEP8 linter and confirmed there are no errors.
+- Gave invalid and repeated inputs.
+- Tested in my local terminal, and the code Institute heroku terminal too.
+
+## Bugs
+
+- When i wrote the code, i was getting errors in the PEP8 linter, some for missing sapcing and also too long strings; therefore i used short variables to replace long name.
+- There are no remainig bugs im aware of.
+
+
