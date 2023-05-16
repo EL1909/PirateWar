@@ -14,7 +14,7 @@ class GameBoard:
         self.board = board
 
 # Translates the Input from user into default list numbers.
-    def get_lett_to_num():
+    def get_letter_to_num():
         ltnm = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
         return ltnm
 
@@ -45,16 +45,19 @@ class Battleship:
 # Ask for input and verifies if valid, will run until a valid input
     def get_user_input(self):
         try:
-            x_row = input("Choose a row number: \n")
-            while x_row not in '12345678':
+            while True:
+                x_row = input("Choose a row number: \n")
+                if x_row.isdigit() and 1 <= int(x_row) <= 8:
+                    break
                 print('Not an number, please select 1 to 8\n')
-                x_row = input("Enter the row number:\n")
 
-            y_column = input("Choose a letter, try to find my ship:\n").upper()
-            while y_column not in "ABCDEFGH":
+            while True:                
+                y_column = input("Choose a letter, try to find my ship:\n").upper()
+                if y_column in "ABCDEFGH":
+                    break
                 print('Sharpen your aim, please select a column LETTER\n')
-                y_column = input("Enter the column letter: \n").upper()
-            return int(x_row) - 1, GameBoard.get_lett_to_num()[y_column]
+                
+            return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
         except ValueError and KeyError:
             print("Not a valid input\n")
             return self.get_user_input()
@@ -70,7 +73,7 @@ class Battleship:
 
 
 # Stablish lenght of the board
-def RunGame():
+def run_game():
     computer_board = GameBoard([[" "] * 8 for i in range(8)])
     user_guess_board = GameBoard([[" "] * 8 for i in range(8)])
     Battleship.create_ships(computer_board)
@@ -107,4 +110,4 @@ def RunGame():
 
 
 __name__ == '__main__'
-RunGame()
+run_game()

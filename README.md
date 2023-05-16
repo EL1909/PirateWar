@@ -44,7 +44,7 @@ I wrote the code using two classes. The first one for the board and its frame.
 
 The second class for the ship's behavior, 3 methods to randomly set up the position on the board, determine and verifies the users input and identifies if the selected space was already chosen.
 
-The runGame function starts the game, stablishing the lenght of the board.
+The run_game function starts the game, stablishing the lenght of the board.
 Then sets 10 turns to begin, will increment x3 when a ship is hitted.
 
 ## Testing
