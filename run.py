@@ -49,13 +49,13 @@ class Battleship:
                 x_row = input("Choose a row number: \n")
                 if x_row.isdigit() and 1 <= int(x_row) <= 8:
                     break
-                print('Not an number, please select 1 to 8\n')
+                print('Sharpen your aim!\n\nPlease type a number from 1 to 8\n')
 
             while True:                
                 y_column = input("Choose a letter, try to find my ship:\n").upper()
-                if y_column in "ABCDEFGH":
+                if y_column.isalpha() and y_column in "ABCDEFGH":
                     break
-                print('Sharpen your aim, please select a column LETTER\n')
+                print('Sharpen your aim!\n\nType a letter from A to H\n')
                 
             return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
         except ValueError and KeyError:
