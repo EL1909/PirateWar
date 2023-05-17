@@ -50,15 +50,14 @@ class Battleship:
         try:
             while True:
                 x_row = input("Choose a row number: \n")
-                if x_row.isdigit() and 1 <= int(x_row) <= 8:
+                if x_row.isdigit() and 1 <= int(x_row) <= len(self.board):
                     break
-                print('Sharpen your aim!\n\nPlease type a number from 1 to 8\n')
-
+                print('Sharpen your aim!\n\nPlease type a number from 1 to', len(self.board))
             while True:                
                 y_column = input("Choose a letter, try to find my ship:\n").upper()
-                if y_column.isalpha() and y_column in "ABCDEFGH":
+                if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
                     break
-                print('Sharpen your aim!\n\nType a letter from A to H\n')
+                print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
                 
             return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
         except ValueError and KeyError:
@@ -92,18 +91,20 @@ def run_game():
     difficulty = choose_difficulty()
     computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
     user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
-    Battleship.create_ships(computer_board)
-    # Start 10 turns, will increment x3 when a ship is hitted
+    battleship = Battleship(computer_board.board)
+    battleship.create_ships()
     turns = 10
+    # Start 10 turns, will increment x3 when a ship is hitted
+    
     while turns > 0:
-        GameBoard.print_board(user_guess_board)
-        # Get user input
-        user_x_row, user_y_column = Battleship.get_user_input(object)
-        # Check if space is already hitted
+        user_guess_board.print_board()
+        user_x_row, user_y_column = battleship.get_user_input()
         guess = user_guess_board.board[user_x_row][user_y_column]
+        # Check if space is already hitted
         while guess == "-" or guess == "X":
             print("You shooted that one already\n")
-            user_x_row, user_y_column = Battleship.get_user_input(object)
+            user_x_row, user_y_column = battleship.get_user_input()
+            guess = user_guess_board.board[user_x_row][user_y_column]
         # Check for hit or miss
         if computer_board.board[user_x_row][user_y_column] == "X":
             print("You sunk one of the Pirates!\n")
