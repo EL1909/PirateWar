@@ -20,8 +20,8 @@ class GameBoard:
 
 # Print the board we will use for the game, starting with one row one and loop
     def print_board(self):
-        print("  A B C D E F G H ")
-        print("  +-+-+-+-+-+-+-+ ")
+        print(" " + " ".join(chr(65 + i) for i in range(len(self.board))))
+        print(" " + "- " * len(self.board))
         row_number = 1
         for row in self.board:
             print("%d|%s|" % (row_number, ":".join(row)))
@@ -33,13 +33,16 @@ class Battleship:
     def __init__(self, board):
         self.board = board
 
-# Place the ships randomly inide our board
+# Place the ships randomly inside the board
     def create_ships(self):
+        board_size = len(self.board)
         for i in range(5):
-            self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
-            while self.board[self.x_row][self.y_column] == "X":
-                self.x_row, self.y_column = random.randint(0, 7), random.randint(0, 7)
-            self.board[self.x_row][self.y_column] = "X"
+            while True:
+                x_row = random.randint(0, board_size - 1)
+                y_column = random.randint(0, board_size -1)
+                if self.board[x_row][y_column] != "X":
+                    self.board[x_row][y_column] != "X"
+                    break
         return self.board
 
 # Ask for input and verifies if valid, will run until a valid input
@@ -72,10 +75,23 @@ class Battleship:
         return hit_ships
 
 
+# Select game difficulty
+def choose_difficulty():
+    while True:
+        difficulty = input('Would you like to play Easy (1) or Hard (2) mode?\n').lower()
+        if difficulty == "1":
+            return 5
+        elif difficulty == "2":
+            return 8
+        else:
+            print ('Type 1 or 2 to start the game \n')
+
+
 # Stablish lenght of the board
 def run_game():
-    computer_board = GameBoard([[" "] * 8 for i in range(8)])
-    user_guess_board = GameBoard([[" "] * 8 for i in range(8)])
+    difficulty = choose_difficulty()
+    computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
+    user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
     Battleship.create_ships(computer_board)
     # Start 10 turns, will increment x3 when a ship is hitted
     turns = 10
