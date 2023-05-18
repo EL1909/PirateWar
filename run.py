@@ -1,31 +1,30 @@
 # import module random to place the ships on the table
 import random
 
-"""
-I create the board using a class
-Computer will place 5 ships randomly and we'll have 10 turns to find them
-Everytime you hit a ship you'll have 3 extra shots
-The board will show a - when missed or X when you hit a ship
-"""
+# I create the board using a class
+# Computer will place 5 ships randomly and we'll have 10 turns to find them
+# Everytime you hit a ship you'll have 3 extra shots
+# The board will show a - when missed or X when you hit a ship
 
 
 class GameBoard:
     def __init__(self, board):
         self.board = board
 
-# Translates the Input from user into default list numbers.
+    # Translates the Input from user into default list numbers.
     def get_letter_to_num():
         ltnm = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
         return ltnm
 
-# Print the board we will use for the game, starting with one row one and loop
+    # Print board we will use for the game, starting with one row one and loop
     def print_board(self):
-        print(" " + " ".join(chr(65 + i) for i in range(len(self.board))))
-        print(" " + "- " * len(self.board))
+        print("  " + " ".join(chr(65 + i) for i in range(len(self.board))))
+        print("  " + "- " * len(self.board))
         row_number = 1
         for row in self.board:
             print("%d|%s|" % (row_number, ":".join(row)))
             row_number += 1
+        print("\n")
 
 
 # Creates 5 ships to be hidden in the board
@@ -33,19 +32,18 @@ class Battleship:
     def __init__(self, board):
         self.board = board
 
-# Place the ships randomly inside the board
+    # Place the ships randomly inside the board
     def create_ships(self):
         board_size = len(self.board)
         for i in range(5):
             while True:
                 x_row = random.randint(0, board_size - 1)
-                y_column = random.randint(0, board_size -1)
+                y_column = random.randint(0, board_size - 1)
                 if self.board[x_row][y_column] != "X":
-                    self.board[x_row][y_column] != "X"
                     break
         return self.board
 
-# Ask for input and verifies if valid, will run until a valid input
+    # Ask for input and verifies if valid, will run until a valid input
     def get_user_input(self):
         try:
             while True:
@@ -53,18 +51,17 @@ class Battleship:
                 if x_row.isdigit() and 1 <= int(x_row) <= len(self.board):
                     break
                 print('Sharpen your aim!\n\nPlease type a number from 1 to', len(self.board))
-            while True:                
+            while True:
                 y_column = input("Choose a letter, try to find my ship:\n").upper()
                 if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
                     break
                 print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
-                
             return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
         except ValueError and KeyError:
             print("Not a valid input\n")
             return self.get_user_input()
 
-# Runs loop thru the table and when finds an "X" fills the hit_ship variable
+    # Runs loop thru the table and when finds an "X" fills the hit_ship variable
     def count_hit_ships(self):
         hit_ships = 0
         for row in self.board:
@@ -83,7 +80,7 @@ def choose_difficulty():
         elif difficulty == "2":
             return 8
         else:
-            print ('Type 1 or 2 to start the game \n')
+            print('Type 1 or 2 to start the game \n')
 
 
 # Stablish lenght of the board
@@ -95,7 +92,6 @@ def run_game():
     battleship.create_ships()
     turns = 10
     # Start 10 turns, will increment x3 when a ship is hitted
-    
     while turns > 0:
         user_guess_board.print_board()
         user_x_row, user_y_column = battleship.get_user_input()
@@ -126,5 +122,4 @@ def run_game():
                 break
 
 
-__name__ == '__main__'
 run_game()
