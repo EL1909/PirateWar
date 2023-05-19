@@ -43,7 +43,7 @@ class battleship:
                     break
         return self.board
 
-    # Ask for input and verifies if valid, will run until a valid input
+    # Ask for input and verifies if valid, will run until a valid input.
     def get_user_input(self):
         try:
             while True:

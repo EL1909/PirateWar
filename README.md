@@ -70,25 +70,27 @@ This is the second version i made, after review and suggested amendments by the 
 - Improvements in design and sounds. 
 
 ## Data Model
+---
 
 I wrote the code using two classes. 
 
 - **gameboard** for the board and its frame.
-    - **get_letter_to_num()**: Translates the Input from user into default list numbers.
-    - **print_board(self)**:  Creates board we will use for the game, starting with one row one and loop
+    - **get_letter_to_num**: Translates the Input from user into default list numbers.
+    - **print_board**:  Creates board we will use for the game, starting with one row one and loop
 
 - **battleship** Creates ships and handle it's behavior.
-    - **create_ships(self)**: Place the ships randomly inside the board.
-    - **get_user_input(self)**: Ask for input and verifies if valid, will run until a valid input.
-    - **count_hit_ships(self)**: Runs loop thru the table and when finds an "X" fills the hit_ship variable.
+    - **create_ships**: Place the ships randomly inside the board.
+    - **get_user_input**: Ask for input and verifies if valid, will run until a valid input.
+    - **count_hit_ships**: Runs loop thru the table and when finds an "X" fills the hit_ship variable.
 
-- **choose_difficulty()** function allows the player to choose game type and stablish the variable to be used as board size.
+- **choose_difficulty** function allows the player to choose game type and stablish the variable to be used as board size.
 
-The **run_game** function starts the game, stablishing the lenght of the board.
+- **run_game** function starts the game, stablishing the lenght of the board.
 
 Then sets 10 turns to begin the game, and will increment x3 everytime a ship is sunked.
 
 ## Testing
+---
 
 I have manually ...
 - Gave invalid and repeated inputs.
@@ -96,6 +98,7 @@ I have manually ...
 - Passed the code through a PEP8 linter and there are two errors on lines 39 and 41.
 
 ## Bugs
+---
 
 - Blank input breaks code.
     - 
@@ -104,6 +107,7 @@ I have manually ...
 
 
 ## Deployement
+---
 This project was deployed using Code Institute's mock terminal for Heroku.
 - Steps for deployement
     - Fork or clone this repository.
@@ -113,6 +117,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
     - Click on **Deploy**
 
 ## Credits
-- I consulted [**Knowledge Mavens**](https://www.youtube.com/@KnowledgeMavens) youtube channel, in order to correctly writte and indentitation of my code.
-- Code Institute for the deployment terminal.
+---
+- I consulted [**Knowledge Mavens**](https://www.youtube.com/@KnowledgeMavens) youtube channel, in order to correctly writte and comptrolling indentitation of my code.
+- Code Institute for the deployment template.
 - Wikipedia for the details of the battleship game.
