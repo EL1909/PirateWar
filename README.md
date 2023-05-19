@@ -46,7 +46,10 @@ This is the second version i made, after review and suggested amendments by the 
 ## Features
 ---
 
-![Playing Grid](images/grid.jpg)
+![Playing Grid](images/5x5.png)
+
+
+![Playing Grid](images/8x8.png)
 
 - Pirate ships are randomly placed on the board.
 - Theres a Header and column to easily identify where to shoot.
@@ -74,7 +77,7 @@ I wrote the code using two classes.
     - **get_letter_to_num**: Translates the Input from user into default list numbers.
     - **print_board**:  Creates board we will use for the game, starting with one row one and loop
 
-- **battleship** Creates ships and handle it's behavior.
+- **battleShip** Creates ships and handle it's behavior.
     - **create_ships**: Place the ships randomly inside the board.
     - **get_user_input**: Ask for input and verifies if valid, will run until a valid input.
     - **count_hit_ships**: Runs loop thru the table and when finds an "X" fills the hit_ship variable.
@@ -88,17 +91,28 @@ Then sets 10 turns to begin the game, and will increment x3 everytime a ship is 
 
 ## Testing
 ---
+### Manual Tests
+1. Select easy game by typing "1".
+2. Select hard game by typing "2".
+3. Press enter to try empty input.
+4. Press space to try empty input.
+5. Press a letter instead a number.
+6. Enter correct values to see sooh behivor.
+7. Enter same values again to check if cell validation works properly.
+8. Gave invalid and repeated inputs.
+9. Tested in my local terminal as well as in Heroku.
 
-I have manually ...
-- Gave invalid and repeated inputs.
-- Tested in my local terminal as well as in Heroku.
-- Passed the code through a PEP8 linter and there are two errors on lines 39 and 41.
+### PEP8
+
+
+
 
 ## Bugs
 ---
 - Blank input breaks code.
     - I added validation to ensure that the user enters a non-empty and valid row number by using the **isdigit()** method to check if the input is a valid digit, and the **1 <= int(x_row) <= 8** condition ensures that the input is within the valid range.
-- 
+- UnboundLocalError: local variable 'battleship' referenced before assignment.
+    - I was trying to use the battleship variable before using it; i fixed by rename the class battleShip using camel case.
 - When i wrote the code, i was getting errors in the PEP8 linter, some for missing spacing and also too long strings; therefore i used short variables to replace long name. However i could not repair the errors on line 39 and 41; i hope there are not signficant errors.
 - There are no remainig bugs im aware of.
 

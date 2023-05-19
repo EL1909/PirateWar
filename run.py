@@ -57,7 +57,7 @@ class battleShip:
                     break
                 print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
             return int(x_row) - 1, gameboard.get_letter_to_num()[y_column]
-        except ValueError and KeyError:
+        except (ValueError, KeyError):
             print("Not a valid input\n")
             return self.get_user_input()
 
