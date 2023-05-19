@@ -99,9 +99,9 @@ I have manually ...
 
 ## Bugs
 ---
-
 - Blank input breaks code.
-    - 
+    - I added validation to ensure that the user enters a non-empty and valid row number by using the **isdigit()** method to check if the input is a valid digit, and the **1 <= int(x_row) <= 8** condition ensures that the input is within the valid range.
+- 
 - When i wrote the code, i was getting errors in the PEP8 linter, some for missing spacing and also too long strings; therefore i used short variables to replace long name. However i could not repair the errors on line 39 and 41; i hope there are not signficant errors.
 - There are no remainig bugs im aware of.
 
@@ -110,7 +110,7 @@ I have manually ...
 ---
 This project was deployed using Code Institute's mock terminal for Heroku.
 - Steps for deployement
-    - Fork or clone this repository.
+    - Clone Code Institute's template repository.
     - Create a new Heroku app.
     - Set the buildbacks to Python and NodeJS in that order.
     - Link the Heroku app to the repository.
