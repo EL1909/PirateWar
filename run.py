@@ -28,7 +28,7 @@ class gameboard:
 
 
 # Creates 5 ships to be hidden in the board
-class battleship:
+class battleShip:
     def __init__(self, board):
         self.board = board
 
@@ -88,7 +88,7 @@ def run_game():
     difficulty = choose_difficulty()
     computer_board = gameboard([[" "] * difficulty for i in range(difficulty)])
     user_guess_board = gameboard([[" "] * difficulty for i in range(difficulty)])
-    battleship = battleship(computer_board.board)
+    battleship = battleShip(computer_board.board)
     battleship.create_ships()
     turns = 10
     # Start 10 turns, will increment x3 when a ship is hitted
@@ -110,7 +110,7 @@ def run_game():
             print("The Pirates just ran away!\n")
             user_guess_board.board[user_x_row][user_y_column] = "-"
         # Check for win or lose
-        if battleship.count_hit_ships(user_guess_board) == 5:
+        if battleShip.count_hit_ships(user_guess_board) == 5:
             print("You hit them all!! Pirates menace is gone!\n\n    WINNER\n")
             break
         else:
