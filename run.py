@@ -7,7 +7,7 @@ import random
 # The board will show a - when missed or X when you hit a ship
 
 
-class GameBoard:
+class gameboard:
     def __init__(self, board):
         self.board = board
 
@@ -28,7 +28,7 @@ class GameBoard:
 
 
 # Creates 5 ships to be hidden in the board
-class Battleship:
+class battleship:
     def __init__(self, board):
         self.board = board
 
@@ -56,7 +56,7 @@ class Battleship:
                 if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
                     break
                 print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
-            return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
+            return int(x_row) - 1, gameboard.get_letter_to_num()[y_column]
         except ValueError and KeyError:
             print("Not a valid input\n")
             return self.get_user_input()
@@ -86,9 +86,9 @@ def choose_difficulty():
 # Stablish lenght of the board
 def run_game():
     difficulty = choose_difficulty()
-    computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
-    user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
-    battleship = Battleship(computer_board.board)
+    computer_board = gameboard([[" "] * difficulty for i in range(difficulty)])
+    user_guess_board = gameboard([[" "] * difficulty for i in range(difficulty)])
+    battleship = battleship(computer_board.board)
     battleship.create_ships()
     turns = 10
     # Start 10 turns, will increment x3 when a ship is hitted
@@ -110,7 +110,7 @@ def run_game():
             print("The Pirates just ran away!\n")
             user_guess_board.board[user_x_row][user_y_column] = "-"
         # Check for win or lose
-        if Battleship.count_hit_ships(user_guess_board) == 5:
+        if battleship.count_hit_ships(user_guess_board) == 5:
             print("You hit them all!! Pirates menace is gone!\n\n    WINNER\n")
             break
         else:
@@ -118,7 +118,7 @@ def run_game():
             print(f"You have {turns} Cannon balls remaining\n")
             if turns == 0:
                 print("Sorry you ran out of balls\n\n    GAME OVER\n")
-                GameBoard.print_board(user_guess_board)
+                gameboard.print_board(user_guess_board)
                 break
 
 
