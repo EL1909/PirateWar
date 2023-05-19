@@ -31,9 +31,6 @@ This is the second version i made, after review and suggested amendments by the 
 - The criteria can be passed as long as commits made for resubmission are small in nature and made up of descriptive messages.
     - As i walk foreward in this field. I understand the usage of certail tools, such as commit messages. Now i know them work as a log book for activities made on the project. In my current repositories i will make shorter commits and continue writting clear mesages to document my working process.
 
-
-
-
 ## How to Play
 ---
 
@@ -62,7 +59,6 @@ This is the second version i made, after review and suggested amendments by the 
     - If there's an error the input will be required again.
     - The same guess can not be entered twice.
 
-
 ### Future Features
 
 - Add difficulty levels by increasing the ships or shoot number.
@@ -83,7 +79,8 @@ I wrote the code using two classes.
     - **get_user_input**: Ask for input and verifies if valid, will run until a valid input.
     - **count_hit_ships**: Runs loop thru the table and when finds an "X" fills the hit_ship variable.
 
-- **choose_difficulty** function allows the player to choose game type and stablish the variable to be used as board size.
+- **choose_difficulty** Allows the player to choose game type and stablish the variable to be used as board size.
+We set the length of the board using chr(65 + i) to convert the ASCII value to the corresponding letter.
 
 - **run_game** function starts the game, stablishing the lenght of the board.
 
