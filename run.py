@@ -9,16 +9,10 @@ class GameBoard:
     def __init__(self, board):
         self.board = board
 
-    def get_letter_to_num():
-        """
-        Translates the Input from user into default list numbers.
-        """
-        ltnm = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
-        return ltnm
-
     def print_board(self):
         """
-        Print board we will use for the game, starting with one row one and loop
+        Print board we will use for the game,
+        starting with one row one and loop
         """
         print("  " + " ".join(chr(65 + i) for i in range(len(self.board))))
         print("  " + "- " * len(self.board))
@@ -47,6 +41,13 @@ class BattleShip:
                     break
         return self.board
 
+    def get_letter_to_num(self):
+        """
+        Translates the Input from user into default list numbers.
+        """
+        ltnm = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
+        return ltnm
+
     def get_user_input(self):
         """
         Ask for input and verifies if valid,
@@ -63,7 +64,7 @@ class BattleShip:
                 if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
                     break
                 print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
-            return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
+            return int(x_row) - 1, self.get_letter_to_num()[y_column]
         except (ValueError, KeyError):
             print("Not a valid input\n")
             return self.get_user_input()
