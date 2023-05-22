@@ -7,7 +7,7 @@ import random
 # The board will show a - when missed or X when you hit a ship
 
 
-class gameboard:
+class GameBoard:
     def __init__(self, board):
         self.board = board
 
@@ -56,12 +56,12 @@ class battleShip:
                 if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
                     break
                 print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
-            return int(x_row) - 1, gameboard.get_letter_to_num()[y_column]
+            return int(x_row) - 1, GameBoard.get_letter_to_num()[y_column]
         except (ValueError, KeyError):
             print("Not a valid input\n")
             return self.get_user_input()
 
-    # Runs loop thru the table and when finds an "X" fills the hit_ship variable
+    # Loop thru the table, if finds an "X" fills the hit_ship variable
     def count_hit_ships(self):
         hit_ships = 0
         for row in self.board:
@@ -86,8 +86,8 @@ def choose_difficulty():
 # Stablish lenght of the board
 def run_game():
     difficulty = choose_difficulty()
-    computer_board = gameboard([[" "] * difficulty for i in range(difficulty)])
-    user_guess_board = gameboard([[" "] * difficulty for i in range(difficulty)])
+    computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
+    user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
     battleship = battleShip(computer_board.board)
     battleship.create_ships()
     turns = 10
@@ -118,7 +118,7 @@ def run_game():
             print(f"You have {turns} Cannon balls remaining\n")
             if turns == 0:
                 print("Sorry you ran out of balls\n\n    GAME OVER\n")
-                gameboard.print_board(user_guess_board)
+                GameBoard.print_board(user_guess_board)
                 break
 
 

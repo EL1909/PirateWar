@@ -73,7 +73,7 @@ This is the second version i made, after review and suggested amendments by the 
 
 I wrote the code using two classes. 
 
-- **gameboard** for the board and its frame.
+- **gameBoard** for the board and its frame.
     - **get_letter_to_num**: Translates the Input from user into default list numbers.
     - **print_board**:  Creates board we will use for the game, starting with one row one and loop
 
