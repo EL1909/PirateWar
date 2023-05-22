@@ -53,17 +53,20 @@ class BattleShip:
         Ask for input and verifies if valid,
         will run until a valid input.
         """
+        max_lenght = chr(65 + len(self.board[0]) - 1)
         try:
             while True:
                 x_row = input("Choose a row number: \n")
                 if x_row.isdigit() and 1 <= int(x_row) <= len(self.board):
                     break
-                print('Sharpen your aim!\n\nPlease type a number from 1 to', len(self.board))
+                print('Sharpen your aim!\n')
+                print('Please type a number from 1 to', len(self.board))
             while True:
-                y_column = input("Choose a letter, try to find my ship:\n").upper()
-                if y_column.isalpha() and 'A' <= y_column <= chr(65 + len(self.board[0]) - 1):
+                y_column = input("Choose a letter:\n").upper()
+                if y_column.isalpha() and 'A' <= y_column <= max_lenght:
                     break
-                print('Sharpen your aim!\n\nType a letter from A to', chr(65 + len(self.board[0]) - 1))
+                print('Sharpen your aim!\n')
+                print('Type a letter from A to', max_lenght)
             return int(x_row) - 1, self.get_letter_to_num()[y_column]
         except (ValueError, KeyError):
             print("Not a valid input\n")
@@ -87,7 +90,7 @@ def choose_difficulty():
     Select game type
     """
     while True:
-        difficulty = input('Would you like to play Easy (1) or Hard (2) mode?\n').lower()
+        difficulty = input('Wanna play Easy (1) or Hard (2) mode\n').lower()
         if difficulty == "1":
             return 5
         elif difficulty == "2":
@@ -101,9 +104,9 @@ def run_game():
     """
     Run Battleship game
     """
-    difficulty = choose_difficulty()
-    computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
-    user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
+    diff = choose_difficulty()
+    computer_board = GameBoard([[" "] * diff for i in range(diff)])
+    user_guess_board = GameBoard([[" "] * diff for i in range(diff)])
     battleship = BattleShip(computer_board.board)
     battleship.create_ships()
     turns = 10
