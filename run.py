@@ -1,41 +1,45 @@
-# import module random to place the ships on the table
+""" Import module to order ships on board """
 import random
-
-# I create the board using a class
-# Computer will place 5 ships randomly and we'll have 10 turns to find them
-# Everytime you hit a ship you'll have 3 extra shots
-# The board will show a - when missed or X when you hit a ship
 
 
 class GameBoard:
+    """
+    Class to create Board instances
+    """
     def __init__(self, board):
         self.board = board
 
-    # Translates the Input from user into default list numbers.
     def get_letter_to_num():
+        """
+        Translates the Input from user into default list numbers.
+        """
         ltnm = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
         return ltnm
 
-    # Print board we will use for the game, starting with one row one and loop
     def print_board(self):
+        """
+        Print board we will use for the game, starting with one row one and loop
+        """
         print("  " + " ".join(chr(65 + i) for i in range(len(self.board))))
         print("  " + "- " * len(self.board))
         row_number = 1
         for row in self.board:
-            print("%d|%s|" % (row_number, ":".join(row)))
+            print(f"{row_number}|{':'.join(row)}|")
             row_number += 1
         print("\n")
 
 
-# Creates 5 ships to be hidden in the board
-class battleShip:
+class BattleShip:
+    """ Creates 5 ships to be hidden in the board """
     def __init__(self, board):
         self.board = board
 
-    # Place the ships randomly inside the board
     def create_ships(self):
+        """
+        Place the ships randomly inside the board
+        """
         board_size = len(self.board)
-        for i in range(5):
+        for _ in range(5):
             while True:
                 x_row = random.randint(0, board_size - 1)
                 y_column = random.randint(0, board_size - 1)
@@ -43,8 +47,11 @@ class battleShip:
                     break
         return self.board
 
-    # Ask for input and verifies if valid, will run until a valid input.
     def get_user_input(self):
+        """
+        Ask for input and verifies if valid,
+        will run until a valid input.
+        """
         try:
             while True:
                 x_row = input("Choose a row number: \n")
@@ -61,8 +68,10 @@ class battleShip:
             print("Not a valid input\n")
             return self.get_user_input()
 
-    # Loop thru the table, if finds an "X" fills the hit_ship variable
     def count_hit_ships(self):
+        """
+        Loop thru the table, if finds an "X" fills the hit_ship variable
+        """
         hit_ships = 0
         for row in self.board:
             for column in row:
@@ -73,6 +82,9 @@ class battleShip:
 
 # Select game difficulty
 def choose_difficulty():
+    """
+    Select game type
+    """
     while True:
         difficulty = input('Would you like to play Easy (1) or Hard (2) mode?\n').lower()
         if difficulty == "1":
@@ -85,10 +97,13 @@ def choose_difficulty():
 
 # Stablish lenght of the board
 def run_game():
+    """
+    Run Battleship game
+    """
     difficulty = choose_difficulty()
     computer_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
     user_guess_board = GameBoard([[" "] * difficulty for i in range(difficulty)])
-    battleship = battleShip(computer_board.board)
+    battleship = BattleShip(computer_board.board)
     battleship.create_ships()
     turns = 10
     # Start 10 turns, will increment x3 when a ship is hitted
@@ -110,7 +125,7 @@ def run_game():
             print("The Pirates just ran away!\n")
             user_guess_board.board[user_x_row][user_y_column] = "-"
         # Check for win or lose
-        if battleShip.count_hit_ships(user_guess_board) == 5:
+        if BattleShip.count_hit_ships(user_guess_board) == 5:
             print("You hit them all!! Pirates menace is gone!\n\n    WINNER\n")
             break
         else:
